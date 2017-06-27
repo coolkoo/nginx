@@ -34,4 +34,4 @@ COPY webroot/* /var/www/html
 COPY start.sh /start.sh
 CMD ["./start.sh"]
  
-EXPOSE 80 443
+#EXPOSE 80 443
