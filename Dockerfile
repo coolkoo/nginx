@@ -29,9 +29,9 @@ RUN mkdir -p /run/php && \
 # Volume configuration
 #VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d", "/var/log/nginx", "/var/www/html"]
  
-COPY webroot/* /var/www/html
+COPY webroot/* /var/www/html/
+
 # Configure Services and Port
 COPY start.sh /start.sh
 CMD ["./start.sh"]
  
-#EXPOSE 80 443
