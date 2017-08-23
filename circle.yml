@@ -9,8 +9,8 @@ dependencies:
 
 test:
   override:
-    - docker run -d -p 80:80 coolkoo/nginx_image; sleep 10
-    - curl --retry 10 --retry-delay 5 -v http://localhost:80/index.html
+    - docker run -d -p 8081:8081 coolkoo/nginx_image; sleep 10
+    - curl --retry 10 --retry-delay 5 -v http://localhost:8081/index.html
 
 deployment:
   hub:
