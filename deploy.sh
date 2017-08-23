@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 echo "stopping running application"
-ssh jason@40.78.97.72 'sudo docker stop nginx'
-ssh jason@40.78.97.72 'sudo docker rm nginx'
+ssh jason@40.78.97.72 'sudo docker stop $(docker ps -a -q)'
+ssh jason@40.78.97.72 'sudo docker rm $(docker ps -a -q)'
 
 echo "pulling latest version of the code"
 ssh jason@40.78.97.72 'sudo docker pull coolkoo/nginx_image:latest'
