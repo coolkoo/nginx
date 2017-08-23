@@ -1,7 +1,15 @@
-jobs:
-  build:
-    docker:
-      - image: coolkoo/nginx_image
-        auth:
-          username: coolkoo
-          password: j@5on359j
+machine:
+  services:
+    - docker
+
+dependencies:
+  override:
+    - docker info
+    - docker build -t coolkoo/nginx_image .
+
+test:
+  override:
+    - docker run -d -p 80:80 coolkoo/nginx_image; sleep 10
+    - curl --retry 10 --retry-delay 5 -v http://localhost:80
+
+
