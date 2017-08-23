@@ -8,7 +8,7 @@ echo "pulling latest version of the code"
 ssh root@40.78.97.72 'docker pull coolkoo/nginx_image:latest'
 
 echo "starting the new version"
-ssh root@40.78.97.72 'docker run -d --restart=always --name nginx -p 8081:8081 coolkoo/nginx_image:latest'
+ssh root@40.78.97.72 'docker run -d --restart=always --name nginx -p 8081:80 coolkoo/nginx_image:latest'
 
 echo "success!"
 
