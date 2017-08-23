@@ -1,0 +1,30 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  pre:
+    - docker info
+  override:
+    - git submodule update --init
+    - ls
+    - pwd
+    - docker build -t  .
+
+test:
+  override:
+    #unfortunately, no docker-compose without docker 1.10, and no
+    #lxc-attach or exec with docker 1.10, so we have to run   
+    #everything ourselves
+    - >
+    docker run -d \
+    --name nginx \
+    -p 8080:8080 \
+    - docker ps
+    - >
+
+deployment:
+  master:
+    branch: master
+    commands:
+      - echo 'deploying'
