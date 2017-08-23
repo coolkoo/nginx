@@ -10,7 +10,7 @@ dependencies:
 test:
   override:
     - docker run -d -p 80:80 coolkoo/nginx_image; sleep 10
-    - curl --retry 10 --retry-delay 5 -v http://localhost:80
+    - curl --retry 10 --retry-delay 5 -v http://localhost:80/index.html
 
 deployment:
   hub:
@@ -18,3 +18,4 @@ deployment:
     commands:
       - docker login -e jason.koo11@gmail.com -u coolkoo -p j@5on359j
       - docker push coolkoo/nginx_image
+      - ./deploy.sh
