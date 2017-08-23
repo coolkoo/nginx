@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 echo "stopping running application"
-ssh jason@40.78.97.72 'sudo docker stop $(docker ps -a -q)'
-ssh jason@40.78.97.72 'sudo docker rm $(docker ps -a -q)'
+ssh root@40.78.97.72 'docker stop $(docker ps -a -q)'
+ssh root@40.78.97.72 'docker rm $(docker ps -a -q)'
 
 echo "pulling latest version of the code"
-ssh jason@40.78.97.72 'sudo docker pull coolkoo/nginx_image:latest'
+ssh root@40.78.97.72 'docker pull coolkoo/nginx_image:latest'
 
 echo "starting the new version"
-ssh jason@40.78.97.72 'sudo docker run -d --restart=always --name nginx -p 80:80 coolkoo/nginx_image:latest'
+ssh root@40.78.97.72 'docker run -d --restart=always --name nginx -p 80:80 coolkoo/nginx_image:latest'
 
 echo "success!"
 
